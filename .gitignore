@@ -1,0 +1,7 @@
+# common files to be ignored
+*.iml
+*.idea
+
+# files to be ignored in java source
+java/problem-solving/out
+
