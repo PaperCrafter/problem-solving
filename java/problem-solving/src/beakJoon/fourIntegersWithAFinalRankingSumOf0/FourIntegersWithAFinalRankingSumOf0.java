@@ -1,8 +1,5 @@
 package beakJoon.fourIntegersWithAFinalRankingSumOf0;
 
-import com.sun.javafx.collections.ArrayListenerHelper;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -59,5 +56,62 @@ public class FourIntegersWithAFinalRankingSumOf0 {
             }
         }
         System.out.println(result);
+    }
+
+    public void solution2() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int size = Integer.parseInt(br.readLine());
+        int[][] arr = new int[size][4];
+        for (int i = 0; i < size; i++) {
+            String[] intArr = br.readLine().split(" ");
+            for (int j = 0; j < 4; j++) {
+                arr[i][j] = Integer.parseInt(intArr[j]);
+            }
+        }
+
+        int[] sumOfTwo = new int[size * size];
+        int idx = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                sumOfTwo[idx] = arr[i][0] + arr[j][1];
+                idx++;
+            }
+        }
+        Arrays.sort(sumOfTwo);
+
+        long result = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                int sum = -1 * (arr[i][2] + arr[j][3]);
+                int upperBound = upperBound(sumOfTwo, sum);
+                if (upperBound >= 0 && upperBound < sumOfTwo.length && sumOfTwo[upperBound] == sum) {
+                    int lowerBound = lowerBound(sumOfTwo, sum);
+                    result += upperBound - lowerBound + 1;
+                }
+            }
+        }
+        System.out.println(result);
+    }
+
+    int upperBound(int arr[], int target) {
+        int left = -1;
+        int right = arr.length;
+        while (left + 1 < right) {
+            int middle = (left + right) >>> 1;
+            if (arr[middle] <= target) left=middle;
+            else right = middle;
+        }
+        return left;
+    }
+
+    int lowerBound(int arr[], int target) {
+        int left = -1;
+        int right = arr.length;
+        while (left + 1 < right) {
+            int middle = (left + right) >>> 1;
+            if (arr[middle] >= target) right = middle ;
+            else left = middle ;
+        }
+        return right;
     }
 }
