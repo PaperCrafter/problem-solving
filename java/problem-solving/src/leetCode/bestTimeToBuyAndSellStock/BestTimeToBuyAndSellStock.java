@@ -1,4 +1,4 @@
-package leetCode.bestToimeToBuyAndSellStock;
+package leetCode.bestTimeToBuyAndSellStock;
 
 public class BestTimeToBuyAndSellStock {
     public int solution(int[] prices) {
