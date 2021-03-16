@@ -20,6 +20,7 @@ public class SectionDivision {
             Arrays.fill(dp[i], Integer.MIN_VALUE);
         }
 
+        // i 구간의 갯수
         for (int i = 0; i < N; i++) {
             //끝 : j
             for (int j = 2 * i; j < M; j++) {
@@ -49,11 +50,3 @@ public class SectionDivision {
         System.out.println(result);
     }
 }
-/*
-* 구간 1개의 최댓값
-* -1 3 4 6 10 10
-* 구간 2개의 최댓값
-*      0 3 9  9
-* 구간 3개의 최댓값
-*
-* */

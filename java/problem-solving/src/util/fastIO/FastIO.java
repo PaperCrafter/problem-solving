@@ -1,4 +1,4 @@
-package fastIO;
+package util.fastIO;
 
 import java.io.*;
 import java.util.StringTokenizer;
@@ -8,7 +8,7 @@ public class FastIO {
     static BufferedWriter bw;
     static StringTokenizer st;
 
-    FastIO() {
+    public FastIO() {
         br = new BufferedReader(new InputStreamReader(System.in));
         bw = new BufferedWriter(new OutputStreamWriter(System.out));
     }
@@ -25,19 +25,19 @@ public class FastIO {
         return st.nextToken();
     }
 
-    int nextInt() {
+    public int nextInt() {
         return Integer.parseInt(next());
     }
 
-    long nextLong() {
+    public long nextLong() {
         return Long.parseLong(next());
     }
 
-    double nextDouble() {
+    public double nextDouble() {
         return Double.parseDouble(next());
     }
 
-    String nextLine() {
+    public String nextLine() {
         String str = null;
         try {
             str = br.readLine();
